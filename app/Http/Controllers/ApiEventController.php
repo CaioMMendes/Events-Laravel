@@ -7,22 +7,20 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 
 
-class EventController extends Controller
+class ApiEventController extends Controller
 {
-    public  function index()
+
+    public function index()
     {
-
-
         $events = Event::all();
-
-
-        return view('home', ['events' => $events]);
+        return response()->json($events);
     }
 
-    public  function create()
-    {
-        return view('events.create');
-    }
+
+
+
+
+
     public  function store(Request $request)
     {
         $event = new Event;
@@ -48,13 +46,16 @@ class EventController extends Controller
 
         $event->save();
 
-        return redirect('/')->with('msg', "Evento criado com sucesso!");
+        return response()->json([
+            "message" => "Evento criado com sucesso!",
+            "event" => $event
+        ]);
     }
 
 
     public function show($id)
     {
         $event = Event::findOrFail($id);
-        return view('events.show', ['event' => $event]);
+        return response()->json($event);
     }
 }

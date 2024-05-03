@@ -31,6 +31,3 @@ Route::get('/teste-search', function () {
 Route::get('/blade', function () {
     return view('welcome');
 });
-
-
-Route::get('/returnJson', [EventController::class, 'returnJson']);

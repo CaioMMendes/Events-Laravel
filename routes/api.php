@@ -2,14 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EventController;
+use App\Http\Controllers\ApiEventController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
 
-
-
-
-Route::get('/returnJson', [EventController::class, 'returnJson']);
+Route::prefix('/events')->group(__DIR__ . '/eventsApi.php');
