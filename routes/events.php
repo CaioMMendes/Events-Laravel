@@ -6,4 +6,5 @@ use App\Http\Controllers\EventController; //! Não entendi porque esse App tem q
 
 
 Route::get('/create', [EventController::class, 'create']);
+Route::get('/{id}', [EventController::class, 'show']);
 Route::post('/', [EventController::class, 'store']);

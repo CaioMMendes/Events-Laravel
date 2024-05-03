@@ -164,3 +164,38 @@ footer p {
     text-align: center;
     padding: 10px;
 }
+
+#image-container,
+#info-container {
+    margin-top: 2rem;
+}
+
+#image-container img {
+    border-radius: 0.7rem;
+}
+
+#info-container h1 {
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+#info-container p {
+    margin: 0;
+    font-size: 0.9rem;
+    display: flex;
+}
+#info-container h3,
+#description-container h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+#info-container ion-icon {
+    font-size: 1.25rem;
+    color: #f2a340;
+    margin-right: 0.3rem;
+}
+
+#info-container #event-submit {
+    margin: 1.25rem 0;
+}
