@@ -199,3 +199,12 @@ footer p {
 #info-container #event-submit {
     margin: 1.25rem 0;
 }
+
+#items-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+#items-list li {
+    display: flex;
+}
