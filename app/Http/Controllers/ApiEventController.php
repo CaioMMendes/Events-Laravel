@@ -12,7 +12,18 @@ class ApiEventController extends Controller
 
     public function index()
     {
-        $events = Event::all();
+        $search = request('search');
+
+        if ($search) {
+
+            $events = Event::where([
+                ['title', 'like', '%' . $search . "%"]
+            ])->get();
+        } else {
+
+            $events = Event::all();
+        }
+
         return response()->json($events);
     }
 
@@ -30,6 +41,7 @@ class ApiEventController extends Controller
         $event->private = $request->private;
         $event->description = $request->description;
         $event->items = $request->items;
+        $event->date = $request->date;
 
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
