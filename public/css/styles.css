@@ -47,6 +47,18 @@ header {
     color: #757575;
 }
 
+#description-container {
+    margin-top: 2rem;
+}
+
+.dashboard-title-container {
+    margin: 2rem auto;
+}
+
+.dashboard-events-container th {
+    width: 25%;
+}
+
 #navbar a:hover {
     color: #f2a340;
 }
