@@ -50,6 +50,14 @@ header {
 #navbar a:hover {
     color: #f2a340;
 }
+#logout-button {
+    font-size: 14px;
+    color: #757575;
+}
+
+#logout-button:hover {
+    color: #f2a340;
+}
 
 /* Search Container */
 #search-container {
