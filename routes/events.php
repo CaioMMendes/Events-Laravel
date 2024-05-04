@@ -8,3 +8,4 @@ use App\Http\Controllers\EventController; //! Não entendi porque esse App tem q
 Route::get('/create', [EventController::class, 'create'])->middleware('auth');
 Route::get('/{id}', [EventController::class, 'show']);
 Route::post('/', [EventController::class, 'store']);
+Route::delete('/{id}', [EventController::class, 'destroy'])->middleware('auth');

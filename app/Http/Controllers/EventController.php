@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Event;
 use App\Models\User;
-
+use Illuminate\Support\Facades\File;
 
 class EventController extends Controller
 {
@@ -91,5 +91,24 @@ class EventController extends Controller
 
 
         return view('events.dashboard', ['events' => $events]);
+    }
+
+
+    public function destroy($id)
+    {
+        $user = auth()->user();
+        $event = Event::findOrFail($id);
+        if ($user->id === $event->user_id) {
+
+            $imagePath = public_path('img/events/' . $event->image);
+
+            if (File::exists($imagePath)) {
+                File::delete($imagePath);
+            }
+            $event->delete();
+        } else {
+            return redirect('/');
+        }
+        return redirect('/dashboard')->with('msg', 'Evento excluído com sucesso!');
     }
 }

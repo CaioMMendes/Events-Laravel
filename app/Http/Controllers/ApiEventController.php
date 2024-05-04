@@ -71,4 +71,18 @@ class ApiEventController extends Controller
         $event = Event::findOrFail($id);
         return response()->json($event);
     }
+
+    //todo livewire não funciona em rotas de api
+    public function destroy($id)
+    {
+        $user = auth()->user();
+        $event = Event::findOrFail($id);
+        if ($user->id === $event->user_id) {
+
+            $event->delete();
+        } else {
+            return redirect('/');
+        }
+        return redirect('/dashboard')->with('msg', 'Evento excluído com sucesso!');
+    }
 }

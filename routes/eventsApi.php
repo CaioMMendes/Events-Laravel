@@ -8,3 +8,4 @@ use App\Http\Controllers\ApiEventController;
 Route::get('/', [ApiEventController::class, 'index']);
 Route::post('/', [ApiEventController::class, 'store']);
 Route::get('/{id}', [ApiEventController::class, 'show']);
+Route::delete('/{id}', [ApiEventController::class, 'destroy'])->middleware('auth');
