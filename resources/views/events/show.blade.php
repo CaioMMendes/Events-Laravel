@@ -23,7 +23,9 @@
                     @foreach ($event->items as $item)
                         <li><ion-icon name='play'></ion-icon> <span>{{ $item }}</span></li>
                     @endforeach
-
+                    @if (count($event->items) === 0)
+                        <p>Nada</p>
+                    @endif
                 </ul>
             </div>
             <div class="col-md-12" id="description-container">

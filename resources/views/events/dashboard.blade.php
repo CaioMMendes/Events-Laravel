@@ -24,9 +24,9 @@
                         <td scope="row">{{ $loop->index + 1 }}</td>
                         <td><a href="/events/{{ $event->id }}">{{ $event->title }}</a></td>
                         <td>0</td>
-                        <td class="table-actions-buttons"><button href="#" class="btn btn-info edit-btn"><ion-icon
-                                    name='create'></ion-icon>
-                                Editar</button>
+                        <td class="table-actions-buttons"><a href='/events/edit/{{ $event->id }}'
+                                class="btn btn-info edit-btn"><ion-icon name='create'></ion-icon>
+                                Editar</a>
 
 
                             <form method="POST" action="/events/{{ $event->id }}">

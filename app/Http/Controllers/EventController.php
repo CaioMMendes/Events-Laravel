@@ -38,12 +38,12 @@ class EventController extends Controller
     {
         $event = new Event;
 
-        $event->title = $request->title;
-        $event->city = $request->city;
+        $event->title = $request->title ?? 'Evento';
+        $event->city = $request->city ?? 'Cidade';
         $event->private = $request->private;
-        $event->description = $request->description;
-        $event->items = $request->items;
-        $event->date = $request->date;
+        $event->description = $request->description ?? 'Descrição';
+        $event->items = $request->items ?? [];
+        $event->date = $request->date ?? now();
 
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -55,6 +55,9 @@ class EventController extends Controller
 
             $request->image->move(public_path('img/events'), $imageName);
 
+            $event->image = $imageName;
+        } else {
+            $imageName = 'default.jpg';
             $event->image = $imageName;
         }
 
@@ -102,7 +105,7 @@ class EventController extends Controller
 
             $imagePath = public_path('img/events/' . $event->image);
 
-            if (File::exists($imagePath)) {
+            if (File::exists($imagePath) && $event->image !== 'default.jpg') {
                 File::delete($imagePath);
             }
             $event->delete();
@@ -110,5 +113,56 @@ class EventController extends Controller
             return redirect('/');
         }
         return redirect('/dashboard')->with('msg', 'Evento excluído com sucesso!');
+    }
+    public function edit($id)
+    {
+        $user = auth()->user();
+        $event = Event::findOrFail($id);
+        if ($user->id !== $event->user_id) {
+
+            return redirect('/');
+        }
+
+
+        return view('events.edit', ['event' => $event]);
+    }
+    public function update(Request $request)
+    {
+        $user = auth()->user();
+        $event = Event::findOrFail($request->id);
+        $data = $request->all();
+
+        if ($user->id !== $event->user_id) {
+
+            return redirect('/');
+        }
+
+
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')) . '.' . $extension;
+
+            $request->image->move(public_path('img/events'), $imageName);
+
+            $data['image'] = $imageName;
+
+
+            $imagePath = public_path('img/events/' . $event->image);
+
+            if (File::exists($imagePath) && $event->image !== 'default.jpg') {
+                File::delete($imagePath);
+            }
+        }
+
+
+
+        $event->update($data);
+
+
+        return redirect('/dashboard')->with('msg', 'Evento editado com sucesso!');
     }
 }

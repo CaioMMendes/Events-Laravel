@@ -51,6 +51,11 @@ header {
     gap: 0.25rem;
 }
 
+.img-preview {
+    width: 6rem;
+    margin-top: 1.25rem;
+}
+
 #description-container {
     margin-top: 2rem;
 }
