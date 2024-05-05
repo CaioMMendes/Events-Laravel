@@ -7,6 +7,26 @@
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
+        },
+        {
+            "src": "/build/(.)",
+            "dest": "/public/build/"
+        },
+        {
+            "src": "/css/(.)",
+            "dest": "/public/css/"
+        },
+        {
+            "src": "/js/(.)",
+            "dest": "/public/js/"
+        },
+        {
+            "src": "/img/(.)",
+            "dest": "/public/img/"
+        },
+        {
+            "src": "/favicon/(.*)",
+            "dest": "/public/favicon/"
         }
     ],
     "env": {
