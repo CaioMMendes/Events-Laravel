@@ -48,9 +48,7 @@
             </div>
             <div class="col-md-12" id="description-container">
                 <h3>Sobre o evento:</h3>
-                @foreach ($eventOwner as $owner)
-                    <p>{{ $owner }}</p>
-                @endforeach
+
                 <p class="event-description">{{ $event->description }}</p>
             </div>
         </div>

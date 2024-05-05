@@ -79,6 +79,8 @@ class EventController extends Controller
         if ($user) {
             if ($event->user_id === $user->id) {
                 $eventOwner = $user;
+            } else {
+                $eventOwner = User::where('id', $event->user_id)->first()->toArray();
             }
 
             $userEvents = $user->eventsAsParticipant->toArray();
