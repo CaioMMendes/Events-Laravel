@@ -20,17 +20,21 @@
                 </p>
                 <p class="event-owner"><ion-icon name="star-outline"></ion-icon>{{ $eventOwner['name'] }}</p>
 
-                <form method="POST" action="/events/join/{{ $event->id }}">
-                    @csrf
-                    <div class="nav-item">
-                        <button class="btn btn-primary" href="/events/join/{{ $event->id }}" id="event-submit"
-                            onclick="event.preventDefault();
+                @if (!$hasUserJoined)
+                    <form method="POST" action="/events/join/{{ $event->id }}">
+                        @csrf
+                        <div class="nav-item">
+                            <button class="btn btn-primary" href="/events/join/{{ $event->id }}" id="event-submit"
+                                onclick="event.preventDefault();
                         this.closest('form').submit(); "
-                            type="button">
-                            {{ __('Confirmar Presença') }}
-                        </button>
-                    </div>
-                </form>
+                                type="button">
+                                {{ __('Confirmar Presença') }}
+                            </button>
+                        </div>
+                    </form>
+                @else
+                    <div class="already-joined-msg">Você já está participando deste evento!</div>
+                @endif
 
                 <h3>O evento conta com:</h3>
                 <ul id="items-list">

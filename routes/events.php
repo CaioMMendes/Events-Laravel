@@ -12,3 +12,4 @@ Route::put('/update/{id}', [EventController::class, 'update'])->middleware('auth
 Route::post('/', [EventController::class, 'store']);
 Route::delete('/{id}', [EventController::class, 'destroy'])->middleware('auth');
 Route::post('/join/{id}', [EventController::class, 'joinEvent'])->middleware('auth');
+Route::delete('/leave/{id}', [EventController::class, 'leaveEvent'])->middleware('auth');
