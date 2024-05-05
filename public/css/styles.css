@@ -50,6 +50,9 @@ header {
     display: flex;
     gap: 0.25rem;
 }
+.navbar-brand {
+    margin-left: 0.75rem;
+}
 
 .img-preview {
     width: 6rem;
