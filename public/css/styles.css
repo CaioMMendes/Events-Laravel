@@ -12,9 +12,28 @@ header {
     background-color: #fff;
     border-bottom: 1px solid #ccc;
 }
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    /* width: fit-content; */
+}
 
 .row {
     margin: 0;
+}
+
+[type="checkbox"]:checked::after {
+    content: "";
+}
+.card-body {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+.card img {
+    min-height: 150px;
 }
 
 .container-fluid {

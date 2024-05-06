@@ -137,6 +137,8 @@ class EventController extends Controller
 
         return view('events.edit', ['event' => $event]);
     }
+
+    //? request pega os dados do form
     public function update(Request $request)
     {
         $user = auth()->user();
