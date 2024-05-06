@@ -1,4 +1,4 @@
-<?php
+<?php //? serve para informar que é um script do lado do servidor o <?
 
 namespace App\Http\Controllers;
 

@@ -48,7 +48,7 @@
     <div class="col-md-10 offset-md-1 dashboard-title-container">
         @if (count($events) > 0)
         @else
-            <p>Você ainda não possui eventos, <a href="/events/create">criar evento</a></p>
+            <p>Você ainda não possui eventos, <a href="{{ route(events . create) }}">criar evento</a></p>
         @endif
     </div>
     <div class="col-md-10 offset-md-1 dashboard-title-container">
